@@ -45,11 +45,21 @@
 }
 
 .output {
-    height: 100px;
+    height: 150px;
     background-color: lightgray;
-    border: 2px solid #000;
-    color: #222;
-    font-size: 3em;
+    border: 1px solid #000;
+    padding: 0px 10px;
+}
+
+.ouput h5 {
+    margin-top: 0px;
+    color: sandybrown;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.output h3 {
     text-align: right;
-    padding: 0px 30px;
+    font-size: 3em;
+    color: #000;
 }

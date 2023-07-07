@@ -1,47 +1,76 @@
-import React from 'react'
+import React, { useState} from 'react'
 import Button from './sub/Button'
 import Screen from './sub/Screen'
 
 import "./calc.css"
 
 function Calculator(props) {
+    const [inp, setInp] = useState('')
+    const [out,setOut] = useState('0')
 
-    // to create numbers
-    const createDigit = () => {
-        let digits = [];
-        for(let i=1; i<10; i++) {
-            digits.push(<Button title={i} />)
+
+
+    // valuaHandler
+    const valueHandler = (value) => {
+        //console.log('value = ', value)
+        const str = inp + value;
+        setInp(str)
+    }
+
+    /* it clears both input and output */
+    const clearOut = (value) => {
+        if(value ==="AC") {
+            setOut('0')
+            setInp('')
         }
-        return digits
+    }
+
+    /* clears only input */
+    const clearInp = (value) => {
+        if(value ==="C") {
+            setInp('')
+        }
+    }
+
+    /* calculate the final output */
+    const calHandler = (val) => {
+        if(val === "=") {
+            if(inp === '') {
+                setOut('0')
+            } else {
+                setOut(eval(inp))
+            }
+        }
     }
     return (
         <div>
-            <h1>Calculator</h1>
+            <h1 className='title'>Calculator</h1>
             <div className="container">
-                <Screen class={'output'} result={0}/>
+                <Screen input={inp} setInput={setInp} class={'output'} result={out} />
                 <div className="ops">
-                    <Button title={"7"} class={"btn"} />
-                    <Button title={"8"} class={"btn"} />
-                    <Button title={"9"} class={"btn"} />
-                    <Button title={"/"} class={"btn btn-warning"} />
+                    <Button title={"7"} handler={valueHandler} class={"btn"} />
+                    <Button title={"8"} handler={valueHandler} class={"btn"} />
+                    <Button title={"9"} handler={valueHandler} class={"btn"} />
+                    <Button title={"/"} handler={valueHandler} class={"btn btn-warning"} />
 
-                    <Button title={"4"} class={"btn"} />
-                    <Button title={"5"} class={"btn"} />
-                    <Button title={"6"} class={"btn"} />
-                    <Button title={"*"} class={"btn btn-warning"} />
+                    <Button title={"4"} handler={valueHandler} class={"btn"} />
+                    <Button title={"5"} handler={valueHandler} class={"btn"} />
+                    <Button title={"6"} handler={valueHandler} class={"btn"} />
+                    <Button title={"*"} handler={valueHandler} class={"btn btn-warning"} />
 
-                    <Button title={"1"} class={"btn"} />
-                    <Button title={"2"} class={"btn"} />
-                    <Button title={"3"} class={"btn"} />
-                    <Button title={"-"} class={"btn btn-warning"} />
+                    <Button title={"1"} handler={valueHandler} class={"btn"} />
+                    <Button title={"2"} handler={valueHandler} class={"btn"} />
+                    <Button title={"3"} handler={valueHandler} class={"btn"} />
+                    <Button title={"-"} handler={valueHandler} class={"btn btn-warning"} />
                     
-                    <Button title={"."} class={"btn btn-warning"} />
-                    <Button title={"0"} class={"btn"} />
-                    <Button title={"%"} class={"btn btn-warning"} />
-                    <Button title={"+"} class={"btn btn-warning"} />
+                    <Button title={"."} handler={valueHandler} class={"btn btn-warning"} />
+                    <Button title={"0"} handler={valueHandler} class={"btn"} />
+                    <Button title={"%"} handler={valueHandler} class={"btn btn-warning"} />
+                    <Button title={"+"} handler={valueHandler} class={"btn btn-warning"} />
 
-                    <Button title={"clear"} class={"btn"} />
-                    <Button title={"="} class={"btn btn-success"} />
+                    <Button title={"AC"} handler={clearOut} class={"btn"} />
+                    <Button title={"C"} handler={clearInp} class={"btn"} />
+                    <Button title={"="} handler={calHandler} class={"btn btn-success"} />
                 </div>
             </div>
         </div>
