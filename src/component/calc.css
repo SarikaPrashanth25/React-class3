@@ -1,0 +1,55 @@
+
+.container {
+    background-color: lightsalmon;
+    width: 80%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+    color: #e43d44;
+}
+
+.ops {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.ops .btn {
+    padding: 12px 14px;
+    width: 20%;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: aquamarine;
+    color: crimson;
+}
+
+.btn-warning {
+    background-color: cadetblue;
+    color:brown;
+}
+
+.btn-success {
+    background-color: chartreuse;
+}
+
+.output {
+    height: 100px;
+    background-color: lightgray;
+    border: 2px solid #000;
+    color: #222;
+    font-size: 3em;
+    text-align: right;
+    padding: 0px 30px;
+}
